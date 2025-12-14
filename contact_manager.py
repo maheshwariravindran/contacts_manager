@@ -10,7 +10,7 @@ class ContactManager:
         self.phone=phone
         self.country=country
 
-    def add_new_contact(self):
+    def add_new_contact():
         name = input("enter name:")
         phone = input("enter phone number:")
         country = input("enter country:").lower()
@@ -43,7 +43,7 @@ class ContactManager:
                     con.commit()
                     print("contact added successfully") 
 
-    def view_contacts(self):
+    def view_contacts():
         q2='select * from contact'
         cursor.execute(q2)
         result=cursor.fetchall()
@@ -52,7 +52,7 @@ class ContactManager:
             print("Country Code:",row[1])
             print("Phone Number:",row[2])     
 
-    def delete_contact(self):
+    def delete_contact():
         name = input("enter the name of the contact to delete: ")
         q3='delete from contact where name=%s'
         v3=(name,)
@@ -60,7 +60,7 @@ class ContactManager:
         con.commit()
         print("contact deleted successfully")
 
-    def update_contact(self):
+    def update_contact():
         name = input("enter the name of the contact to update: ")
         new_phone = input("enter the new phone number: ")
         country = input("enter country: ").lower()
@@ -78,7 +78,7 @@ class ContactDetails(ContactManager):
         self.email = email
         self.address = address
 
-    def add_details():
+    def add_details(self):
         name = input("enter name: ")
         email = input("enter email: ")
         address = input("enter address: ")
@@ -88,7 +88,7 @@ class ContactDetails(ContactManager):
         con.commit()
         print("details added successfully")
 
-    def view_all_details():
+    def view_all_details(self):
         q6='select * from contact natural join details'
         cursor.execute(q6)
         result=cursor.fetchall()    
@@ -102,7 +102,7 @@ class ContactDetails(ContactManager):
         con.commit()
         print("email updated successfully")
 
-    def update_address():
+    def update_address(self):
         name = input("enter the name of the contact to update address: ")
         new_address = input("enter the new address: ")
         q8='update contact_details set address=%s where name=%s'
